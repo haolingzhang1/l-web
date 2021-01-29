@@ -29,29 +29,31 @@ module.exports = {
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
-  // devServer: {
-  //   port: port,
-  //   open: true,
-  //   overlay: {
-  //     warnings: false,
-  //     errors: true
-  //   },
-  //   before: require('./mock/mock-server.js')
   devServer: {
-    compress: true,
-    host: "localhost",
-    port: 8088,
-    proxy: {
-      "/api": {
-        target: "http://localhost:8080",
-        ws: true,
-        changeOrigin: true,
-        pathRewrite:{
-          '^/api': '/api'
-          }
-      }
+    port: port,
+    open: false,
+    overlay: {
+      warnings: false,
+      errors: true
     }
   },
+  //   before: require('./mock/mock-server.js')
+  // devServer: {
+  //   compress: true,
+  //   host: "localhost",
+  //   port: 8088,
+  //   open: false,
+  //   proxy: {
+  //     "/api": {
+  //       target: "http://localhost:8080",
+  //       ws: true,
+  //       changeOrigin: true,
+  //       pathRewrite:{
+  //         '^/api': '/api'
+  //         }
+  //     }
+  //   }
+  // },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.

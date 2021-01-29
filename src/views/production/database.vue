@@ -12,13 +12,11 @@
       </el-tab-pane>
       <el-tab-pane label="数据库入口">
         <div class="grid">
-         
-
+    
         </div>
-       </el-tab-pane>
+      </el-tab-pane>
 
-
-      </el-tabs>  
+    </el-tabs>  
     </div>
 </template>
 
@@ -26,7 +24,8 @@
 import { getTemplateListByTemplateId } from '../../api/template'
 export default {
   name: 'Database',
- }
+
+}
 </script>
 
 <style scoped>

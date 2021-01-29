@@ -14,7 +14,7 @@ const constantRoutes = [
   },
   {
     path: '/login',
-    component: 'views/production/database',
+    component: 'views/login/index',
     hidden: true
   },
   {
