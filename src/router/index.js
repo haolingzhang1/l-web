@@ -79,19 +79,7 @@ export const constantRoutes = [
         path: 'dashboard',
         component: () => import('@/views/dashboard/index'),
         name: 'Dashboard',
-        meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
-      }
-    ]
-  },
-  {
-    path: '/documentation',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/documentation/index'),
-        name: 'Documentation',
-        meta: { title: 'Documentation', icon: 'documentation', affix: true }
+        meta: { title: '首页', icon: 'dashboard', affix: true }
       }
     ]
   },
@@ -104,24 +92,164 @@ export const constantRoutes = [
         path: 'index',
         component: () => import('@/views/guide/index'),
         name: 'Guide',
-        meta: { title: 'Guide', icon: 'guide', noCache: true }
+        meta: { title: '公司简介', icon: 'guide', noCache: true }
       }
     ]
   },
   {
-    path: '/profile',
+    path: '/documentation',
     component: Layout,
-    redirect: '/profile/index',
-    hidden: true,
+    redirect: '/documentation/index',
+    alwaysShow: true, // will always show the root menu
+    name: 'Documentation',
+    meta: {
+      title: '各部门共享文件',
+      icon: 'lock',
+      roles: ['admin', 'editor'] // you can set roles in root nav
+    },
     children: [
       {
         path: 'index',
-        component: () => import('@/views/profile/index'),
-        name: 'Profile',
-        meta: { title: 'Profile', icon: 'user', noCache: true }
+        component: () => import('@/views/documentation/index'),
+        name: 'Documentation',
+        meta: { title: '全公司共享目录', icon: 'documentation' }
+      },
+      {
+        path: 'epitaxy',
+        component: () => import('@/views/documentation/epitaxy'),
+        name: 'EpitaxyDocumentation',
+        meta: { title: '外延部', icon: 'documentation' }
+      },
+      {
+        path: 'chip',
+        component: () => import('@/views/documentation/chip'),
+        name: 'ChipDocumentation',
+        meta: { title: '芯片部', icon: 'documentation' }
+      },
+      {
+        path: 'factory',
+        component: () => import('@/views/documentation/factory'),
+        name: 'FactoryDocumentation',
+        meta: { title: '厂务部', icon: 'documentation' }
+      },
+      {
+        path: 'information',
+        component: () => import('@/views/documentation/information'),
+        name: 'InformationDocumentation',
+        meta: { title: '信息部', icon: 'documentation' }
+      },
+      {
+        path: 'finance',
+        component: () => import('@/views/documentation/finance'),
+        name: 'FinanceDocumentation',
+        meta: { title: '财务部', icon: 'documentation' }
+      },
+      {
+        path: 'purchase',
+        component: () => import('@/views/documentation/purchase'),
+        name: 'PurchaseDocumentation',
+        meta: { title: '采购部', icon: 'documentation' }
+      },
+      {
+        path: 'market',
+        component: () => import('@/views/documentation/market'),
+        name: 'FactoryDocumentation',
+        meta: { title: '销售部', icon: 'documentation' }
+      }
+    ]
+  },
+  {
+    path: '/production',
+    component: Layout,
+    // redirect: '/security-information/index',
+    alwaysShow: true, // will always show the root menu
+    name: 'Production',
+    meta: {
+      title: '生产状况',
+      icon: 'component',
+      roles: ['admin', 'editor'] // you can set roles in root nav
+    },
+    children: [
+      {
+        path: 'room-status',
+        component: () => import('@/views/production/room-status'),
+        name: 'RoomStatus',
+        meta: { title: '洁净室状态' }
+      },
+      {
+        path: 'equipement-status',
+        component: () => import('@/views/production/equipement-status'),
+        name: 'EquipementStatus',
+        meta: { title: '设备状态' }
+      },
+      {
+        path: 'database',
+        component: () => import('@/views/production/database'),
+        name: 'Database',
+        meta: { title: '数据库入口' }
+      }
+    ]
+  },
+  {
+    path: '/security-information',
+    component: Layout,
+    // redirect: '/security-information/index',
+    alwaysShow: true, // will always show the root menu
+    name: 'Security',
+    meta: {
+      title: '安全培训及常见事项',
+      icon: 'example',
+      roles: ['admin', 'editor'] // you can set roles in root nav
+    },
+    children: [
+      {
+        path: 'training',
+        component: () => import('@/views/security-information/training'),
+        name: 'Training',
+        meta: { title: '洁净室安全培训', icon: 'documentation' }
+      },
+      {
+        path: 'formular',
+        component: () => import('@/views/security-information/formular'),
+        name: 'Formular',
+        meta: { title: '常用数学，物理公式，化学方程式', icon: 'documentation' }
+      },
+      {
+        path: 'video',
+        component: () => import('@/views/security-information/video'),
+        name: 'Video',
+        meta: { title: '常用软件，设备培训视频部', icon: 'documentation' }
+      }
+    ]
+  },
+  {
+    path: '/Ithelpdesk',
+    component: Layout,
+    redirect: '/helpdesk/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/helpdesk/index'),
+        name: 'IThelpdesk',
+        meta: { title: 'IThelpdesk', icon: 'icon', noCache: true }
       }
     ]
   }
+  //,
+  // {
+  //   path: '/profile',
+  //   component: Layout,
+  //   redirect: '/profile/index',
+  //   // hidden: true,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: () => import('@/views/profile/index'),
+  //       name: 'Profile',
+  //       meta: { title: 'Profile', icon: 'user', noCache: true }
+  //     }
+  //   ]
+  // }
 ]
 
 /**
@@ -129,6 +257,7 @@ export const constantRoutes = [
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [
+  /*
   {
     path: '/permission',
     component: Layout,
@@ -170,7 +299,8 @@ export const asyncRoutes = [
       }
     ]
   },
-
+  */
+  /*
   {
     path: '/icon',
     component: Layout,
@@ -183,13 +313,15 @@ export const asyncRoutes = [
       }
     ]
   },
-
+/*
   /** when your routing map is too long, you can split it into small modules **/
+  /*
   componentsRouter,
   chartsRouter,
   nestedRouter,
   tableRouter,
-
+  */
+  /*
   {
     path: '/example',
     component: Layout,
@@ -382,7 +514,7 @@ export const asyncRoutes = [
       }
     ]
   },
-
+*/
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
